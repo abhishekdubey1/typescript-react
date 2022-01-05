@@ -18,19 +18,23 @@ interface TableProps {
 const Table: FC<TableProps> = ({ data, columns }) => (
   <table>
     <thead>
-      {columns.map((c, i) => (
-        <th key={i}>{c}</th>
-      ))}
+      <tr>
+        {columns.map((c, i) => (
+          <th key={i}>{c}</th>
+        ))}
+      </tr>
     </thead>
-    {data.map(
-      (row: { name: string; job: string; happiness: number }, i: number) => (
-        <tr key={row.name}>
-          {columns.map((c, i) => (
-            <td key={i}>{row[c]}</td>
-          ))}
-        </tr>
-      )
-    )}
+    <tbody>
+      {data.map(
+        (row: { name: string; job: string; happiness: number }, i: number) => (
+          <tr key={row.name}>
+            {columns.map((c, i) => (
+              <td key={i}>{row[c]}</td>
+            ))}
+          </tr>
+        )
+      )}
+    </tbody>
   </table>
 );
 
